@@ -21,6 +21,6 @@ const upload = multer({
 });
 
 // router.post('/createNews', newsController.createNews);
-router.post('/createNews', upload.array('image'), newsController.createNews);
-
+router.post('/createNews', upload.array('image',10), newsController.createNews);
+router.get('/getNews', newsController.getNews);
 module.exports = router;

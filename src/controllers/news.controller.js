@@ -26,15 +26,43 @@ const createNews = async (req, res) => {
 };
 
 const getNews = async (req, res) => {
-    try{
+    try {
         const newsData = await News.find();
-        res.status(201).send(newsData);
-    }catch(err){
+        res.status(200).send(newsData);
+    } catch (err) {
         res.status(402).send(err);
     }
 };
 
+const deleteNews = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const deleteNews = await News.findByIdAndDelete({ _id: id });
+        if (!deleteNews) {
+            res.status(404).send();
+        } else {
+            res.status(200).send(deleteNews);
+        }
+    } catch (err) {
+        res.status(402).send(err);
+    }
+}
+
+const updateNews = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const updateNews = await News.findByIdAndUpdate({_id : id}, req.body,{
+            new : true,
+        });
+        res.status(200).send(updateNews);
+    } catch (err) {
+        res.status(402).send(err);
+    }
+}
+
 module.exports = {
     createNews,
     getNews,
+    deleteNews,
+    updateNews
 }

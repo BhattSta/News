@@ -9,15 +9,16 @@ const createNews = async (req, res) => {
         if (req.files && req.files.length > 0) {
             req.files.forEach((file) => {
                 // console.log(file);
-                image.push({
-                    url: file.filename,
-                    type: file.mimetype,
-                });
+                // image.push({
+                //     url: file.filename,
+                //     type: file.mimetype,
+                // });
+                image.push(file.filename)
             });
         }
 
         news.image = image;
-
+        
         const createNews = await news.save();
         res.status(200).send(createNews);
     } catch (err) {

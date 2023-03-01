@@ -16,6 +16,9 @@ const newsSchema = mongoose.Schema({
     image: {
         type: Array,
     },
+    // image: {
+    //     type: String,
+    // },
 },
     {
         timestamps: true,

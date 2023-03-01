@@ -23,6 +23,6 @@ const upload = multer({
 // router.post('/createNews', newsController.createNews);
 router.post('/createNews', upload.array('image',10), newsController.createNews);
 router.get('/getNews', newsController.getNews);
-router.delete('/deleteNews/:id', newsController.deleteNews);
-router.patch('/updateNews/:id', newsController.updateNews);
+router.get('/deleteNews/:id', newsController.deleteNews);
+router.post('/updateNews/:id', newsController.updateNews);
 module.exports = router;
